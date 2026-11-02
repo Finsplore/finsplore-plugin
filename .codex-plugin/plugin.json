@@ -1,0 +1,17 @@
+{
+  "name": "finsplore",
+  "version": "0.1.0",
+  "description": "Ask your AI assistant about your Finsplore ledger: accounts, spending, budgets, goals and net worth. Six skills plus the Finsplore connection. Australia only. General information, not financial advice.",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Finsplore",
+    "shortDescription": "Work with your Finsplore ledger",
+    "longDescription": "Ask about your accounts, spending, budgets, goals and net worth. Review a month, check budgets, categorise transactions, track goals, test FIRE what-ifs and import statements. Finsplore is for Australians. It gives general information only, not personal financial advice, and it does not move money. Changes are proposals that need approval.",
+    "developerName": "Finsplore Pty Ltd",
+    "category": "productivity",
+    "websiteURL": "https://finsplore.io",
+    "privacyPolicyURL": "https://finsplore.io/legal/privacy-policy",
+    "termsOfServiceURL": "https://finsplore.io/legal/terms-of-service"
+  }
+}

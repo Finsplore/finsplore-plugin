@@ -123,7 +123,9 @@ const manifests = () => {
   if (new Set(urls.values()).size > 1) {
     errors.push(`MCP URL differs across files: ${[...urls.keys()].join('; ')}`);
   }
-  const note = present.length ? `${present.length} manifest file(s)` : 'no manifests yet';
+  let note = present.length ? `${present.length} manifest file(s)` : 'no manifests yet';
+  if ([...urls.values()].some((u) => /^https:\/\/[^/]*\.invalid(\/|:|$)/.test(u)))
+    note += ' - WARNING: placeholder MCP URL (.invalid), replace before any submission';
   return { errors, note };
 };
 

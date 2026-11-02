@@ -12,20 +12,22 @@ Finsplore is for Australian users, uses their personal-finance ledger, and gives
 
 ## Current state
 
-The repo is being set up. Today it has licence, community and AI-agent files only. Skills, manifests and the check script are planned and do not exist yet. Do not describe planned files as if they exist.
+The six skills, the manifests for Claude, Cursor and ChatGPT/Codex, and the check script exist. The MCP server address in `mcp.json` and `.mcp.json` is a placeholder (`mcp.finsplore.invalid`) until the server is public. Logos (`assets/`), Gemini CLI and Antigravity files do not exist yet. Do not describe planned files as if they exist.
 
-## Planned layout
+## Layout
 
 ```
 skills/<name>/SKILL.md      one folder per skill, the source of truth
 plugin.json                 open Agent Plugins standard manifest
-mcp.json, .mcp.json         the MCP server URL
+mcp.json, .mcp.json         the MCP server URL (keep both, with the same URL)
 .claude-plugin/             Claude manifest
 .cursor-plugin/             Cursor manifest
 .codex-plugin/              ChatGPT and Codex manifest
-assets/                     logos
-scripts/                    manifest and skill checks
+scripts/check.mjs           the one CI check (run: node scripts/check.mjs)
+assets/                     logos (planned)
 ```
+
+Keep `name` and `version` identical in every manifest. Change the server URL in both `mcp.json` and `.mcp.json` together.
 
 ## Rules
 
@@ -36,7 +38,7 @@ scripts/                    manifest and skill checks
 5. **Keep the wording honest.** General information only, Australia only, no advice, no money movement. Do not add marketing claims.
 6. **Do not invent URLs, versions or sizes.** If a value is unknown, leave a clear `TODO` and tell the maintainer.
 7. **Licence:** Apache-2.0. The licence does not grant the right to use the Finsplore name or logo (see the README).
-8. **Manifests must stay valid.** When the check script exists, run it before you finish. Until then, check JSON by parsing it.
+8. **Manifests must stay valid.** Run `node scripts/check.mjs` before you finish. It needs no install.
 
 ## Commits and pull requests
 
