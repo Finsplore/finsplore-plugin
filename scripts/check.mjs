@@ -124,6 +124,10 @@ const manifests = () => {
   if (new Set(urls.values()).size > 1) {
     errors.push(`MCP URL differs across files: ${[...urls.keys()].join('; ')}`);
   }
+  const rootUi = parsed.get('plugin.json')?.extensions?.['com.openai']?.interface;
+  const codexUi = parsed.get('.codex-plugin/plugin.json')?.interface;
+  if (rootUi && codexUi && JSON.stringify(rootUi) !== JSON.stringify(codexUi))
+    errors.push('OpenAI "interface" differs between plugin.json (extensions.com.openai) and .codex-plugin/plugin.json');
   const PNG = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
   const logoPaths = (node, found = []) => {
     if (!node || typeof node !== 'object') return found;

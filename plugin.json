@@ -11,5 +11,21 @@
   "homepage": "https://finsplore.io",
   "repository": "https://github.com/Finsplore/finsplore-plugin",
   "license": "Apache-2.0",
-  "keywords": ["finsplore", "personal finance", "budgeting", "net worth", "australia", "mcp"]
+  "keywords": ["finsplore", "personal finance", "budgeting", "net worth", "australia", "mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Finsplore",
+        "shortDescription": "Work with your Finsplore ledger",
+        "longDescription": "Ask about your accounts, spending, budgets, goals and net worth. Review a month, check budgets, categorise transactions, track goals, test FIRE what-ifs and import statements. Finsplore is for Australians. It gives general information only, not personal financial advice, and it does not move money. Changes are proposals that need approval.",
+        "developerName": "Finsplore Pty Ltd",
+        "category": "productivity",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png",
+        "websiteURL": "https://finsplore.io",
+        "privacyPolicyURL": "https://finsplore.io/legal/privacy-policy",
+        "termsOfServiceURL": "https://finsplore.io/legal/terms-of-service"
+      }
+    }
+  }
 }

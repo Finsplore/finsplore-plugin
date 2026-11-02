@@ -66,7 +66,7 @@ Install steps for each will appear here once it is published.
 | `CONTRIBUTING.md`, `SECURITY.md`, `.github/` templates | How to contribute and report problems. | Yes |
 | `LICENSE` | Apache-2.0. | Yes |
 | `skills/<name>/SKILL.md` | The six skills. One folder each, the same for every platform. | Yes |
-| `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest and the server address (placeholder for now). | Yes |
+| `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest (with the ChatGPT/Codex listing details under `extensions.com.openai`) and the server address (placeholder for now). | Yes |
 | `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/` | Manifests for Claude, Cursor, and ChatGPT and Codex. Perplexity reads the Claude or Codex manifest as it is. | Yes |
 | `scripts/check.mjs`, `.github/workflows/check.yml` | The single CI check for manifests, skills and content. | Yes |
 | `assets/logo.png` | Finsplore logo (512x512 PNG), used by the Cursor and Codex manifests. | Yes |
