@@ -147,3 +147,12 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Finsplore plugin: secrets, OS files, upload bundles, local agent notes
+.env*
+!.env.example
+.DS_Store
+Thumbs.db
+*.zip
+.ai/
+.claude/settings.local.json
