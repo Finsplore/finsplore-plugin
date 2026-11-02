@@ -28,6 +28,7 @@ const JSON_FILES = [...NAMED, ...MCP_FILES, ...MARKETPLACES];
 const MAX_SKILLS = 32;
 const MAX_FILES = 1000;
 const MAX_BYTES = 20 * 1024 * 1024;
+const MAX_LOGO_BYTES = 1024 * 1024;
 
 const TEXT_EXT = new Set(['.md', '.json', '.yml', '.yaml', '.txt', '.mjs', '.js', '.toml']);
 const LEAKS = [
@@ -122,6 +123,28 @@ const manifests = () => {
   }
   if (new Set(urls.values()).size > 1) {
     errors.push(`MCP URL differs across files: ${[...urls.keys()].join('; ')}`);
+  }
+  const PNG = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  const logoPaths = (node, found = []) => {
+    if (!node || typeof node !== 'object') return found;
+    for (const [key, value] of Object.entries(node)) {
+      if (['logo', 'composerIcon', 'icon'].includes(key) && typeof value === 'string') found.push(value);
+      else logoPaths(value, found);
+    }
+    return found;
+  };
+  for (const p of NAMED) {
+    for (const ref of logoPaths(parsed.get(p))) {
+      const file = ref.replace(/^\.\//, '');
+      if (!existsSync(join(root, file))) {
+        errors.push(`${p}: logo "${ref}" does not exist`);
+        continue;
+      }
+      const size = statSync(join(root, file)).size;
+      if (size > MAX_LOGO_BYTES) errors.push(`${p}: logo "${ref}" is ${size} bytes; limit is ${MAX_LOGO_BYTES}`);
+      if (extname(file) === '.png' && !readFileSync(join(root, file)).subarray(0, 8).equals(PNG))
+        errors.push(`${p}: logo "${ref}" is not a valid PNG`);
+    }
   }
   let note = present.length ? `${present.length} manifest file(s)` : 'no manifests yet';
   if ([...urls.values()].some((u) => /^https:\/\/[^/]*\.invalid(\/|:|$)/.test(u)))
