@@ -1,0 +1,16 @@
+{
+  "name": "finsplore",
+  "displayName": "Finsplore",
+  "version": "0.1.0",
+  "description": "Ask your AI assistant about your Finsplore ledger: accounts, spending, budgets, goals and net worth. Six skills plus the Finsplore connection. Australia only. General information, not financial advice.",
+  "author": {
+    "name": "Finsplore Pty Ltd",
+    "url": "https://finsplore.io"
+  },
+  "homepage": "https://finsplore.io",
+  "repository": "https://github.com/Finsplore/finsplore-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["finsplore", "personal finance", "budgeting", "net worth", "australia", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

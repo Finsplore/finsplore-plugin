@@ -4,7 +4,7 @@ Connect your AI assistant to your [Finsplore](https://finsplore.io) ledger, so y
 
 Finsplore is built for Australians. It gives **general information only**, not personal financial advice, and it **does not move money**.
 
-> **Status: being set up.** This repo has its licence, community and AI-agent files. The skills, plugin manifests and install steps are not published yet, so there is nothing to install today. Nothing has been submitted to any marketplace.
+> **Status: not published yet.** The six skills and the plugin manifests are in this repo. The server address in them is a **placeholder** (`mcp.finsplore.invalid`) until the Finsplore server is public, so the plugin cannot connect yet and nothing has been submitted to any marketplace.
 
 ## What you will be able to ask
 
@@ -65,10 +65,12 @@ Install steps for each will appear here once it is published.
 | `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` | Point Claude Code, Gemini CLI and Copilot at `AGENTS.md`. | Yes |
 | `CONTRIBUTING.md`, `SECURITY.md`, `.github/` templates | How to contribute and report problems. | Yes |
 | `LICENSE` | Apache-2.0. | Yes |
-| `skills/<name>/SKILL.md` | The skills. One folder each, the same for every platform. | Planned |
-| `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest and the server address. | Planned |
-| `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/` | Per-platform manifests. | Planned |
-| `assets/`, `scripts/` | Logos, and checks for manifests and skills. | Planned |
+| `skills/<name>/SKILL.md` | The six skills. One folder each, the same for every platform. | Yes |
+| `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest and the server address (placeholder for now). | Yes |
+| `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/` | Manifests for Claude, Cursor, and ChatGPT and Codex. Perplexity reads the Claude or Codex manifest as it is. | Yes |
+| `scripts/check.mjs`, `.github/workflows/check.yml` | The single CI check for manifests, skills and content. | Yes |
+| `assets/` | Logos. | Planned |
+| `gemini-extension.json`, `.antigravity-plugin/` | Gemini CLI and Antigravity. | Planned |
 
 Every AI tool working on this repo reads the same rules from [`AGENTS.md`](AGENTS.md). Edit that file for rule changes; the others only point to it.
 
