@@ -69,7 +69,7 @@ Install steps for each will appear here once it is published.
 | `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest and the server address (placeholder for now). | Yes |
 | `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/` | Manifests for Claude, Cursor, and ChatGPT and Codex. Perplexity reads the Claude or Codex manifest as it is. | Yes |
 | `scripts/check.mjs`, `.github/workflows/check.yml` | The single CI check for manifests, skills and content. | Yes |
-| `assets/` | Logos. | Planned |
+| `assets/logo.png` | Finsplore logo (512x512 PNG), used by the Cursor and Codex manifests. | Yes |
 | `gemini-extension.json`, `.antigravity-plugin/` | Gemini CLI and Antigravity. | Planned |
 
 Every AI tool working on this repo reads the same rules from [`AGENTS.md`](AGENTS.md). Edit that file for rule changes; the others only point to it.

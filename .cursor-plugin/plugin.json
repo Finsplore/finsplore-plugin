@@ -5,8 +5,10 @@
   "description": "Ask your AI assistant about your Finsplore ledger: accounts, spending, budgets, goals and net worth. Six skills plus the Finsplore connection. Australia only. General information, not financial advice.",
   "author": {
     "name": "Finsplore Pty Ltd",
+    "email": "support@finsplore.io",
     "url": "https://finsplore.io"
   },
+  "logo": "assets/logo.png",
   "homepage": "https://finsplore.io",
   "repository": "https://github.com/Finsplore/finsplore-plugin",
   "license": "Apache-2.0",
