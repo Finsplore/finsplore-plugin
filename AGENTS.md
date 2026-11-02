@@ -43,7 +43,6 @@ Keep `name` and `version` identical in every manifest. Change the server URL in 
 ## Commits and pull requests
 
 - Use Conventional Commits: `feat(skills): ...`, `fix(manifest): ...`, `docs: ...`, `chore: ...`.
-- Do not add AI attribution trailers (such as `Co-Authored-By`) to commits.
 - Default branch is `main`. Follow the pull-request template.
 - Keep a change to one concern. Mention any platform whose manifest changed.
 
