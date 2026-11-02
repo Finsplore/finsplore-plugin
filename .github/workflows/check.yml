@@ -1,0 +1,31 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Manifests (valid, same name, version and MCP URL)
+        run: node scripts/check.mjs manifests
+
+      - name: Skills (front matter, names, platform limits)
+        if: ${{ !cancelled() }}
+        run: node scripts/check.mjs skills
+
+      - name: Content (secrets, private details, wording)
+        if: ${{ !cancelled() }}
+        run: node scripts/check.mjs content
