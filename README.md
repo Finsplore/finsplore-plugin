@@ -1,52 +1,80 @@
 # Finsplore plugin
 
-The Finsplore plugin lets an AI app work with your Finsplore ledger: accounts, transactions, budgets, goals and net worth. Finsplore is built for Australians. It gives **general information only**, not personal financial advice, and it does not move money.
+Connect your AI assistant to your [Finsplore](https://finsplore.io) ledger, so you can ask about your accounts, spending, budgets, goals and net worth in plain language.
 
-> **Status: being set up.** This repo currently holds licence, community and AI-agent files. The skills, plugin manifests and install steps are not published yet, so there is nothing to install today.
+Finsplore is built for Australians. It gives **general information only**, not personal financial advice, and it **does not move money**.
 
-## What this repo is
+> **Status: being set up.** This repo has its licence, community and AI-agent files. The skills, plugin manifests and install steps are not published yet, so there is nothing to install today. Nothing has been submitted to any marketplace.
 
-- A **plugin**: skills (plain-text instructions) plus a manifest that tells an AI app where the Finsplore MCP server is.
-- One repo for many AI platforms: Claude, Cursor, ChatGPT and Codex, Grok Build, Perplexity, Gemini CLI, Antigravity and GitHub Copilot.
-- **Not** the Finsplore server. The server, sign-in and tools are in a separate private repo.
+## What you will be able to ask
 
-## Files for AI agents and contributors
+The plugin ships ready-made skills for common jobs:
 
-Every AI tool that works on this repo reads the same rules, from `AGENTS.md`.
-
-| File | Who reads it | What it is |
-|---|---|---|
-| [`AGENTS.md`](AGENTS.md) | Codex, Cursor, Copilot, Gemini CLI, Claude Code and other tools | The rules for working in this repo. The single source of truth. |
-| [`CLAUDE.md`](CLAUDE.md) | Claude Code | One line that imports `AGENTS.md`. |
-| [`GEMINI.md`](GEMINI.md) | Gemini CLI | One line that imports `AGENTS.md`. |
-| [`.github/copilot-instructions.md`](.github/copilot-instructions.md) | GitHub Copilot | Points at `AGENTS.md`. |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | People | How to propose a change. |
-| [`SECURITY.md`](SECURITY.md) | People | How to report a vulnerability privately. |
-| [`.github/pull_request_template.md`](.github/pull_request_template.md) | People | The pull-request checklist. |
-| [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE) | People | Bug report form, and a link to private security reporting. |
-| [`LICENSE`](LICENSE) | Everyone | Apache-2.0. |
-
-Edit `AGENTS.md` for rule changes. The other agent files only point to it.
-
-## Planned contents
-
-| Path | Purpose |
+| Skill | What it does |
 |---|---|
-| `skills/<name>/SKILL.md` | The skills, one folder each. Same for every platform. |
-| `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest and the server URL. |
-| `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/` | Per-platform manifests. |
-| `assets/` | Logos. |
-| `scripts/` | Checks for manifests and skills. |
+| Monthly money review | A plain-language review of one month: income, spending by category, budgets, net worth, unusual transactions and goals. |
+| Budget check-in | How you are tracking against your budgets this month, with the transactions behind any overspend. |
+| Categorise transactions | Suggests categories for uncategorised transactions in batches and applies the ones you approve. |
+| Goal progress | Where each savings goal stands, with the projected date and contribution history. |
+| FIRE what-if | Financial-independence readiness and what-if projections, with the assumptions stated. Projections, not guarantees. |
+| Import and reconcile | Imports CSV statement text into an account and reconciles it against a known bank balance. |
 
-These do not exist yet.
+You can also ask your own questions. The assistant uses Finsplore's tools to read your data.
 
-## Installing
+## How it works
 
-Install steps for each AI app will be added here when the plugin is published.
+```
+Your AI app  --installs-->  this plugin (skills + a pointer to the server)
+     |
+     |  signs in with OAuth, you approve
+     v
+Finsplore MCP server  (separate, private; this repo has no server code)
+```
+
+- The plugin holds **instructions and a manifest only**.
+- Your data stays in Finsplore. The assistant reads it through tools after you sign in and approve the connection.
+
+## Safety
+
+- A new connection is **read-only** unless you grant more.
+- Every change an assistant asks for is a **proposal**. Nothing changes until it is approved.
+- Some changes can only be approved by you, inside Finsplore.
+- You can revoke a connected app in Finsplore under Settings > Connected AI.
+- Figures are computed by Finsplore and quoted as returned, not recalculated by the assistant.
+
+## Planned platforms
+
+| Platform | What we plan to publish | Status |
+|---|---|---|
+| Claude | Connector (the server listing) and plugin | Not submitted |
+| ChatGPT and Codex | Plugin | Not submitted |
+| Cursor | Plugin | Not submitted |
+| Grok Build | Plugin | Not submitted |
+| Perplexity | Connector; users import the plugin themselves | Not submitted |
+| Gemini CLI | Plugin (extension) | Not submitted |
+| Antigravity | Plugin | Not submitted |
+| GitHub Copilot | Plugin | Not submitted |
+
+Install steps for each will appear here once it is published.
+
+## Repo contents
+
+| Path | Purpose | Exists |
+|---|---|---|
+| `AGENTS.md` | Rules for AI tools and people working in this repo. | Yes |
+| `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` | Point Claude Code, Gemini CLI and Copilot at `AGENTS.md`. | Yes |
+| `CONTRIBUTING.md`, `SECURITY.md`, `.github/` templates | How to contribute and report problems. | Yes |
+| `LICENSE` | Apache-2.0. | Yes |
+| `skills/<name>/SKILL.md` | The skills. One folder each, the same for every platform. | Planned |
+| `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest and the server address. | Planned |
+| `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/` | Per-platform manifests. | Planned |
+| `assets/`, `scripts/` | Logos, and checks for manifests and skills. | Planned |
+
+Every AI tool working on this repo reads the same rules from [`AGENTS.md`](AGENTS.md). Edit that file for rule changes; the others only point to it.
 
 ## Contributing and security
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Do not report security problems as public issues.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Report security problems privately as described in [SECURITY.md](SECURITY.md), not as public issues.
 
 ## Licence and trademark
 
