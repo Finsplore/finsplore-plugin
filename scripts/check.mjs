@@ -150,6 +150,32 @@ const manifests = () => {
         errors.push(`${p}: logo "${ref}" is not a valid PNG`);
     }
   }
+  const legalUrls = (node, found = []) => {
+    if (!node || typeof node !== 'object') return found;
+    for (const [key, value] of Object.entries(node)) {
+      if (['privacyPolicyURL', 'termsOfServiceURL'].includes(key) && typeof value === 'string')
+        found.push([key, value]);
+      else legalUrls(value, found);
+    }
+    return found;
+  };
+  const legalSeen = new Map();
+  for (const p of NAMED) {
+    for (const [key, value] of legalUrls(parsed.get(p))) {
+      let u;
+      try {
+        u = new URL(value);
+      } catch {
+        errors.push(`${p}: ${key} is not a valid URL (got "${value}")`);
+        continue;
+      }
+      if (u.protocol !== 'https:' || u.hostname !== 'finsplore.io' || !u.pathname.endsWith('/'))
+        errors.push(`${p}: ${key} must be an https://finsplore.io/... URL ending in "/" (got "${value}")`);
+      if (legalSeen.has(key) && legalSeen.get(key) !== value)
+        errors.push(`${key} differs across manifests: "${legalSeen.get(key)}" and "${value}" (${p})`);
+      legalSeen.set(key, value);
+    }
+  }
   let note = present.length ? `${present.length} manifest file(s)` : 'no manifests yet';
   if ([...urls.values()].some((u) => /^https:\/\/[^/]*\.invalid(\/|:|$)/.test(u)))
     note += ' - WARNING: placeholder MCP URL (.invalid), replace before any submission';

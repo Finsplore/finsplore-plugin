@@ -1,83 +1,92 @@
 # Finsplore plugin
 
-Connect your AI assistant to your [Finsplore](https://finsplore.io) ledger, so you can ask about your accounts, spending, budgets, goals and net worth in plain language.
+[![check](https://github.com/Finsplore/finsplore-plugin/actions/workflows/check.yml/badge.svg)](https://github.com/Finsplore/finsplore-plugin/actions/workflows/check.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
+Skills and manifests that connect an AI assistant to your [Finsplore](https://finsplore.io) ledger, so you can ask about your accounts, spending, budgets, goals and net worth in plain language.
 
 Finsplore is built for Australians. It gives **general information only**, not personal financial advice, and it **does not move money**.
 
-> **Status: not published yet.** The six skills and the plugin manifests are in this repo. The server address in them is a **placeholder** (`mcp.finsplore.invalid`) until the Finsplore server is public, so the plugin cannot connect yet and nothing has been submitted to any marketplace.
+> **Availability:** this plugin is not yet listed in any AI app's directory. The server address in the manifests is a placeholder until the Finsplore server is public, so the plugin cannot connect yet.
 
-## What you will be able to ask
+## Skills
 
-The plugin ships ready-made skills for common jobs:
+Six ready-made skills cover the common jobs. You can also ask your own questions; the assistant reads your data through Finsplore's tools.
 
 | Skill | What it does |
 |---|---|
-| Monthly money review | A plain-language review of one month: income, spending by category, budgets, net worth, unusual transactions and goals. |
-| Budget check-in | How you are tracking against your budgets this month, with the transactions behind any overspend. |
-| Categorise transactions | Suggests categories for uncategorised transactions in batches and applies the ones you approve. |
-| Goal progress | Where each savings goal stands, with the projected date and contribution history. |
-| FIRE what-if | Financial-independence readiness and what-if projections, with the assumptions stated. Projections, not guarantees. |
-| Import and reconcile | Imports CSV statement text into an account and reconciles it against a known bank balance. |
-
-You can also ask your own questions. The assistant uses Finsplore's tools to read your data.
+| `monthly-money-review` | A plain-language review of one month: income, spending by category, budgets, net worth, unusual transactions and goals. |
+| `budget-check-in` | How you are tracking against your budgets this month, with the transactions behind any overspend. |
+| `categorise-transactions` | Suggests categories for uncategorised transactions in batches and applies the ones you approve. |
+| `goal-progress` | Where each savings goal stands, with the projected date and contribution history. |
+| `fire-what-if` | Financial-independence readiness and what-if projections, with the assumptions stated. Projections, not guarantees. |
+| `import-and-reconcile` | Imports CSV statement text into an account and reconciles it against a known bank balance. |
 
 ## How it works
 
 ```
-Your AI app  --installs-->  this plugin (skills + a pointer to the server)
-     |
-     |  signs in with OAuth, you approve
-     v
-Finsplore MCP server  (separate, private; this repo has no server code)
+AI app  --installs-->  this plugin (skills + server address)
+   |
+   |  OAuth sign-in, you approve the connection
+   v
+Finsplore MCP server  (private; no server code in this repo)
 ```
 
-- The plugin holds **instructions and a manifest only**.
-- Your data stays in Finsplore. The assistant reads it through tools after you sign in and approve the connection.
+The plugin contains instructions and manifests only. Your data stays in Finsplore, and the assistant reads it through tools after you sign in and approve the connection.
 
 ## Safety
 
 - A new connection is **read-only** unless you grant more.
 - Every change an assistant asks for is a **proposal**. Nothing changes until it is approved.
 - Some changes can only be approved by you, inside Finsplore.
-- You can revoke a connected app in Finsplore under Settings > Connected AI.
+- You can revoke a connected app at any time in Finsplore under **Settings > Connected AI**.
 - Figures are computed by Finsplore and quoted as returned, not recalculated by the assistant.
 
-## Planned platforms
+See the [Privacy Policy](https://finsplore.io/legal/privacy-policy/) and [Terms of Service](https://finsplore.io/legal/terms-of-service/).
 
-| Platform | What we plan to publish | Status |
-|---|---|---|
-| Claude | Connector (the server listing) and plugin | Not submitted |
-| ChatGPT and Codex | Plugin | Not submitted |
-| Cursor | Plugin | Not submitted |
-| Grok Build | Plugin | Not submitted |
-| Perplexity | Connector; users import the plugin themselves | Not submitted |
-| Gemini CLI | Plugin (extension) | Not submitted |
-| Antigravity | Plugin | Not submitted |
-| GitHub Copilot | Plugin | Not submitted |
+## Supported AI apps
 
-Install steps for each will appear here once it is published.
+One set of skills serves every app. Only the manifest differs.
 
-## Repo contents
+| App | Manifest |
+|---|---|
+| Claude | `.claude-plugin/plugin.json` |
+| ChatGPT and Codex | `.codex-plugin/plugin.json` |
+| Cursor | `.cursor-plugin/plugin.json` |
+| Perplexity | reads the Claude or Codex manifest |
 
-| Path | Purpose | Exists |
-|---|---|---|
-| `AGENTS.md` | Rules for AI tools and people working in this repo. | Yes |
-| `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` | Point Claude Code, Gemini CLI and Copilot at `AGENTS.md`. | Yes |
-| `CONTRIBUTING.md`, `SECURITY.md`, `.github/` templates | How to contribute and report problems. | Yes |
-| `LICENSE` | Apache-2.0. | Yes |
-| `skills/<name>/SKILL.md` | The six skills. One folder each, the same for every platform. | Yes |
-| `plugin.json`, `mcp.json`, `.mcp.json` | The open-standard manifest (with the ChatGPT/Codex listing details under `extensions.com.openai`) and the server address (placeholder for now). | Yes |
-| `.claude-plugin/`, `.cursor-plugin/`, `.codex-plugin/` | Manifests for Claude, Cursor, and ChatGPT and Codex. Perplexity reads the Claude or Codex manifest as it is. | Yes |
-| `scripts/check.mjs`, `.github/workflows/check.yml` | The single CI check for manifests, skills and content. | Yes |
-| `assets/logo.png` | Finsplore logo (512x512 PNG), used by the Cursor and Codex manifests. | Yes |
-| `gemini-extension.json`, `.antigravity-plugin/` | Gemini CLI and Antigravity. | Planned |
+Install instructions for each app will be added here when it is listed.
 
-Every AI tool working on this repo reads the same rules from [`AGENTS.md`](AGENTS.md). Edit that file for rule changes; the others only point to it.
+## Repository layout
+
+```
+skills/<name>/SKILL.md      one folder per skill, shared by every app
+plugin.json                 open Agent Plugins manifest
+mcp.json, .mcp.json         Finsplore MCP server address
+.claude-plugin/             Claude manifest
+.codex-plugin/              ChatGPT and Codex manifest
+.cursor-plugin/             Cursor manifest
+assets/logo.png             logo used by the manifests
+scripts/check.mjs           validation script used by CI
+AGENTS.md                   rules for people and AI agents (CLAUDE.md, GEMINI.md and
+                            .github/copilot-instructions.md point to it)
+```
+
+## Development
+
+The check validates the manifests, the skills and the repo content (secrets, private details, wording). It needs Node.js 18 or later and no install:
+
+```sh
+node scripts/check.mjs            # all sections
+node scripts/check.mjs skills     # one section: manifests, skills or content
+```
+
+CI runs the same script on every pull request and on pushes to `main`.
 
 ## Contributing and security
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Report security problems privately as described in [SECURITY.md](SECURITY.md), not as public issues.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and [AGENTS.md](AGENTS.md) before opening a pull request. Report security problems privately as described in [SECURITY.md](SECURITY.md), not as public issues.
 
 ## Licence and trademark
 
-Code and text in this repo are licensed under [Apache-2.0](LICENSE). The licence does not give you the right to use the Finsplore name, logo or other trademarks.
+Code and text in this repo are licensed under [Apache-2.0](LICENSE). The licence does not grant the right to use the Finsplore name, logo or other trademarks.

@@ -23,8 +23,8 @@
         "composerIcon": "./assets/logo.png",
         "logo": "./assets/logo.png",
         "websiteURL": "https://finsplore.io",
-        "privacyPolicyURL": "https://finsplore.io/legal/privacy-policy",
-        "termsOfServiceURL": "https://finsplore.io/legal/terms-of-service"
+        "privacyPolicyURL": "https://finsplore.io/legal/privacy-policy/",
+        "termsOfServiceURL": "https://finsplore.io/legal/terms-of-service/"
       }
     }
   }
