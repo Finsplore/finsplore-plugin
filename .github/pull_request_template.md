@@ -2,23 +2,20 @@
 
 <!-- One or two sentences. -->
 
-## Platforms touched
+## Manifests touched
 
-- [ ] Skills (all platforms)
-- [ ] Claude
-- [ ] Cursor
-- [ ] ChatGPT / Codex
-- [ ] Grok Build
-- [ ] Perplexity
-- [ ] Gemini CLI
-- [ ] Antigravity
-- [ ] GitHub Copilot
-- [ ] Docs or repo files only
+- [ ] None (skills or docs only)
+- [ ] `plugin.json` (open standard, includes the ChatGPT/Codex listing details)
+- [ ] `.claude-plugin/`
+- [ ] `.codex-plugin/`
+- [ ] `.cursor-plugin/`
+- [ ] `mcp.json` and `.mcp.json` (changed together)
 
 ## Checklist
 
+- [ ] `node scripts/check.mjs` passes
+- [ ] `name` and `version` are identical in every manifest
 - [ ] No secrets, `.env` files, private hostnames or user data
 - [ ] No server code
 - [ ] Skill text is the same for every platform
 - [ ] Wording is honest: general information only, Australia only, no money movement
-- [ ] JSON files parse (and the check script passes, once it exists)
