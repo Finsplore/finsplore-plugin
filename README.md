@@ -7,7 +7,7 @@ Skills and manifests that connect an AI assistant to your [Finsplore](https://fi
 
 Finsplore is built for Australians. It gives **general information only**, not personal financial advice, and it **does not move money**.
 
-> **Availability:** this plugin is not yet listed in any AI app's directory. The server address in the manifests is a placeholder until the Finsplore server is public, so the plugin cannot connect yet.
+> **Availability:** this plugin is not yet listed in any AI app's directory. You need a Finsplore account to use it.
 
 ## Skills
 
@@ -44,6 +44,10 @@ The plugin contains instructions and manifests only. Your data stays in Finsplor
 
 See the [Privacy Policy](https://finsplore.io/legal/privacy-policy/) and [Terms of Service](https://finsplore.io/legal/terms-of-service/).
 
+## Support
+
+For help using Finsplore, visit the [Help Centre](https://help.finsplore.io/) or email [support@finsplore.io](mailto:support@finsplore.io). For a problem with the skills or manifests in this repo, [open an issue](https://github.com/Finsplore/finsplore-plugin/issues).
+
 ## Supported AI apps
 
 One set of skills serves every app. Only the manifest differs.
@@ -55,14 +59,14 @@ One set of skills serves every app. Only the manifest differs.
 | Cursor | `.cursor-plugin/plugin.json` |
 | Perplexity | reads the Claude or Codex manifest |
 
-Install instructions for each app will be added here when it is listed.
+Install steps for each app will be added here once the plugin is listed there.
 
 ## Repository layout
 
 ```
 skills/<name>/SKILL.md      one folder per skill, shared by every app
 plugin.json                 open Agent Plugins manifest
-mcp.json, .mcp.json         Finsplore MCP server address
+mcp.json, .mcp.json         Finsplore MCP server address (https://api.finsplore.io/mcp)
 .claude-plugin/             Claude manifest
 .codex-plugin/              ChatGPT and Codex manifest
 .cursor-plugin/             Cursor manifest

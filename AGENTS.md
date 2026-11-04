@@ -4,7 +4,7 @@ This file is read by Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot and 
 
 ## What this repo is
 
-The public home of the Finsplore **plugin**: a bundle of skills (plain-text instructions) and a manifest that tells an AI app where the Finsplore MCP server is. One repo serves many AI platforms (Claude, Cursor, ChatGPT and Codex, Grok Build, Perplexity, Gemini CLI, Antigravity, GitHub Copilot).
+The public home of the Finsplore **plugin**: a bundle of skills (plain-text instructions) and a manifest that tells an AI app where the Finsplore MCP server is. One repo serves several AI platforms: Claude, Cursor, ChatGPT and Codex, and Perplexity today, with more planned.
 
 It is **not** the Finsplore server. The MCP server (`/mcp`), OAuth and all tools live in a separate private repo and are not copied here.
 
@@ -12,7 +12,7 @@ Finsplore is for Australian users, uses their personal-finance ledger, and gives
 
 ## Current state
 
-The six skills, the manifests for Claude, Cursor and ChatGPT/Codex, and the check script exist. The MCP server address in `mcp.json` and `.mcp.json` is `https://api.finsplore.io/mcp`. The logo is `assets/logo.png`. Gemini CLI and Antigravity files do not exist yet. Do not describe planned files as if they exist.
+The six skills, the manifests for Claude, Cursor and ChatGPT/Codex, and the check script exist. The MCP server address in `mcp.json` and `.mcp.json` is `https://api.finsplore.io/mcp`. The logo is `assets/logo.png`. The plugin is not yet listed in any AI app's directory. Manifests for other platforms (for example Gemini CLI and Antigravity) do not exist yet. Do not describe planned files as if they exist.
 
 ## Layout
 
@@ -24,7 +24,7 @@ mcp.json, .mcp.json         the MCP server URL (keep both, with the same URL)
 .cursor-plugin/             Cursor manifest
 .codex-plugin/              ChatGPT and Codex manifest
 scripts/check.mjs           the one CI check (run: node scripts/check.mjs)
-assets/logo.png              logo, referenced by the manifests
+assets/logo.png             logo, referenced by the manifests
 ```
 
 Keep `name` and `version` identical in every manifest. Change the server URL in both `mcp.json` and `.mcp.json` together.
@@ -48,6 +48,6 @@ Keep `name` and `version` identical in every manifest. Change the server URL in 
 
 ## Where to look
 
-- [README.md](README.md): what the plugin is and how to install it.
+- [README.md](README.md): what the plugin is, its skills and how to check it.
 - [CONTRIBUTING.md](CONTRIBUTING.md): how people contribute.
 - [SECURITY.md](SECURITY.md): how to report a vulnerability.

@@ -4,7 +4,7 @@ about: A skill, manifest or install step does not work
 labels: bug
 ---
 
-**Which AI app and version?** (Claude, Cursor, ChatGPT, Codex, Grok Build, Perplexity, Gemini CLI, Antigravity, Copilot)
+**Which AI app and version?** (for example Claude, Cursor, ChatGPT, Codex or Perplexity)
 
 **What did you try?**
 
