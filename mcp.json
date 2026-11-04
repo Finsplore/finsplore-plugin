@@ -3,7 +3,7 @@
   "mcpServers": {
     "finsplore": {
       "type": "streamable-http",
-      "url": "https://mcp.finsplore.invalid/mcp"
+      "url": "https://api.finsplore.io/mcp"
     }
   }
 }

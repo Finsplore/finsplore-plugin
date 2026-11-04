@@ -176,6 +176,27 @@ const manifests = () => {
       legalSeen.set(key, value);
     }
   }
+  const supportUrls = (node, found = []) => {
+    if (!node || typeof node !== 'object') return found;
+    for (const [key, value] of Object.entries(node)) {
+      if (key === 'supportURL' && typeof value === 'string') found.push(value);
+      else supportUrls(value, found);
+    }
+    return found;
+  };
+  for (const p of NAMED) {
+    for (const value of supportUrls(parsed.get(p))) {
+      let u;
+      try {
+        u = new URL(value);
+      } catch {
+        errors.push(`${p}: supportURL is not a valid URL (got "${value}")`);
+        continue;
+      }
+      if (u.protocol !== 'https:' || !(u.hostname === 'finsplore.io' || u.hostname.endsWith('.finsplore.io')))
+        errors.push(`${p}: supportURL must be an https URL on finsplore.io (got "${value}")`);
+    }
+  }
   let note = present.length ? `${present.length} manifest file(s)` : 'no manifests yet';
   if ([...urls.values()].some((u) => /^https:\/\/[^/]*\.invalid(\/|:|$)/.test(u)))
     note += ' - WARNING: placeholder MCP URL (.invalid), replace before any submission';

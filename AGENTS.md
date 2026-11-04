@@ -12,7 +12,7 @@ Finsplore is for Australian users, uses their personal-finance ledger, and gives
 
 ## Current state
 
-The six skills, the manifests for Claude, Cursor and ChatGPT/Codex, and the check script exist. The MCP server address in `mcp.json` and `.mcp.json` is a placeholder (`mcp.finsplore.invalid`) until the server is public. The logo is `assets/logo.png`. Gemini CLI and Antigravity files do not exist yet. Do not describe planned files as if they exist.
+The six skills, the manifests for Claude, Cursor and ChatGPT/Codex, and the check script exist. The MCP server address in `mcp.json` and `.mcp.json` is `https://api.finsplore.io/mcp`. The logo is `assets/logo.png`. Gemini CLI and Antigravity files do not exist yet. Do not describe planned files as if they exist.
 
 ## Layout
 
